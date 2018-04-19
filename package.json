@@ -1,0 +1,29 @@
+{
+  "name": "music-leaf",
+  "productName": "Music Leaf",
+  "version": "1.0.0",
+  "description": "A minimal Electron music player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "watchify app/app.js -t babelify -o public/js/bundle.js --debug --verbose"
+  },
+  "repository": "https://github.com/mzelenyuk/MusicLeaf",
+  "keywords": [
+    "Electron",
+    "React"
+  ],
+  "author": "Michael Zelenyuk",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
+    "react": "^16.3.2"
+  }
+}
