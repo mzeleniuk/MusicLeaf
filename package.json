@@ -5,8 +5,8 @@
   "description": "A minimal Electron music player",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "watch": "watchify app/app.js -t babelify -o public/js/bundle.js --debug --verbose"
+    "start": "browserify app/app.js -t babelify --outfile public/bundle.js && electron .",
+    "watch": "watchify app/app.js -t babelify -o public/bundle.js --debug --verbose"
   },
   "repository": "https://github.com/mzelenyuk/MusicLeaf",
   "keywords": [
@@ -24,6 +24,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babelify": "^8.0.0",
-    "react": "^16.3.2"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   }
 }
