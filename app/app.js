@@ -1,18 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Search from "./components/search.jsx";
 
-class Search extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <form>
-        <input type="text" />
-        <input type="submit" />
-      </form>
+      <Search />
     );
   }
 };
 
 ReactDOM.render(
-  <Search />,
+  <App />,
   document.getElementById("content")
 );
