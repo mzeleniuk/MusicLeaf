@@ -2,6 +2,8 @@ import React from "react";
 import Axios from "axios";
 import Sound from "react-sound";
 
+import Search from "../components/search.jsx";
+
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,9 @@ class AppContainer extends React.Component {
       elapsed: "00:00",
       total: "00:00",
       position: 0,
-      playFromPosition: 0
+      playFromPosition: 0,
+      autoCompleteValue: "",
+      tracks: []
     }
   };
 
@@ -66,9 +70,33 @@ class AppContainer extends React.Component {
     this.randomTrack();
   };
 
+  handleSelect(value, item) {
+    this.setState({ autoCompleteValue: value, track: item });
+  };
+
+  handleChange(event, value) {
+    this.setState({ autoCompleteValue: event.target.value });
+    let _this = this;
+
+    Axios.get(`https://api.soundcloud.com/tracks?client_id=${this.client_id}&q=${value}`)
+      .then(function (response) {
+        _this.setState({ tracks: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   render () {
     return (
       <div className="music-leaf">
+        <Search
+          autoCompleteValue={this.state.autoCompleteValue}
+          tracks={this.state.tracks}
+          handleSelect={this.handleSelect.bind(this)}
+          handleChange={this.handleChange.bind(this)}
+        />
+
         <Sound
           url={this.prepareUrl(this.state.track.stream_url)}
           playStatus={this.state.playStatus}
