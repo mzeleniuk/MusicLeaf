@@ -3,6 +3,7 @@ import Axios from "axios";
 import Sound from "react-sound";
 
 import Search from "../components/search.jsx";
+import Details from "../components/details.jsx";
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -96,6 +97,8 @@ class AppContainer extends React.Component {
           handleSelect={this.handleSelect.bind(this)}
           handleChange={this.handleChange.bind(this)}
         />
+
+        <Details title={this.state.track.title} />
 
         <Sound
           url={this.prepareUrl(this.state.track.stream_url)}
