@@ -4,6 +4,7 @@ import Sound from "react-sound";
 
 import Search from "../components/search.jsx";
 import Details from "../components/details.jsx";
+import Player from "../components/player.jsx";
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -88,6 +89,26 @@ class AppContainer extends React.Component {
       });
   };
 
+  togglePlay() {
+    if (this.state.playStatus === Sound.status.PLAYING) {
+      this.setState({ playStatus: Sound.status.PAUSED });
+    } else {
+      this.setState({ playStatus: Sound.status.PLAYING });
+    }
+  };
+
+  stop() {
+    this.setState({ playStatus: Sound.status.STOPPED });
+  };
+
+  forward() {
+    this.setState({ playFromPosition: this.state.playFromPosition += 1000 * 10 });
+  };
+
+  backward() {
+    this.setState({ playFromPosition: this.state.playFromPosition -= 1000 * 10 });
+  };
+
   render () {
     return (
       <div className="music-leaf">
@@ -99,6 +120,15 @@ class AppContainer extends React.Component {
         />
 
         <Details title={this.state.track.title} />
+
+        <Player
+          togglePlay={this.togglePlay.bind(this)}
+          stop={this.stop.bind(this)}
+          playStatus={this.state.playStatus}
+          forward={this.forward.bind(this)}
+          backward={this.backward.bind(this)}
+          random={this.randomTrack.bind(this)}
+        />
 
         <Sound
           url={this.prepareUrl(this.state.track.stream_url)}
