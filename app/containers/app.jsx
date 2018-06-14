@@ -5,6 +5,8 @@ import Sound from "react-sound";
 import Search from "../components/search.jsx";
 import Details from "../components/details.jsx";
 import Player from "../components/player.jsx";
+import Progress from "../components/progress.jsx";
+import Footer from "../components/footer.jsx";
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -130,6 +132,12 @@ class AppContainer extends React.Component {
           random={this.randomTrack.bind(this)}
         />
 
+        <Progress
+          elapsed={this.state.elapsed}
+          total={this.state.total}
+          position={this.state.position}
+        />
+
         <Sound
           url={this.prepareUrl(this.state.track.stream_url)}
           playStatus={this.state.playStatus}
@@ -137,6 +145,8 @@ class AppContainer extends React.Component {
           playFromPosition={this.state.playFromPosition}
           onFinishedPlaying={this.handleSongFinished.bind(this)}
         />
+
+        <Footer />
       </div>
     );
   };
