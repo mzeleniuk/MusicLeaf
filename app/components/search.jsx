@@ -6,13 +6,13 @@ class Search extends React.Component {
     const listStyles = {
       item: {
         padding: "2px 6px",
-        cursor: "default"
+        cursor: "pointer"
       },
       highlightedItem: {
         color: "white",
-        background: "#F38B72",
+        background: "#28a745",
         padding: "2px 6px",
-        cursor: "default"
+        cursor: "pointer"
       }
     };
 

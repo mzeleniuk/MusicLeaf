@@ -10,11 +10,13 @@ body {
 .search {
   width: 100%;
   padding: 0 20px;
-  margin: 20px 0;
+  text-align: center;
 }
 
 .search div {
-  width: 100%;
+  width: 500px;
+  margin: 20px 0;
+  overflow: hidden;
 }
 
 .search input {
@@ -44,7 +46,6 @@ body {
   padding: 50px 10px;
   margin: 0;
   color: #ffffff;
-  text-shadow: 2px 2px #e4e4e4;
 }
 
 .player {

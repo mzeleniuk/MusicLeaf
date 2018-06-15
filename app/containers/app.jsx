@@ -12,7 +12,7 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.client_id = "2f98992c40b8edf17423d93bda2e04ab";
+    this.client_id = "b8428bbfb1a5d926fdd92fbb6e45f480";
 
     this.state = {
       track: { stream_url: "", title: "", artwork_url: "" },
@@ -111,9 +111,22 @@ class AppContainer extends React.Component {
     this.setState({ playFromPosition: this.state.playFromPosition -= 1000 * 10 });
   };
 
+  xlArtwork(url) {
+    return url.replace(/large/, "t500x500");
+  };
+
   render () {
+    const leafStyle = {
+      width: "auto",
+      height: "100vh",
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${this.xlArtwork(this.state.track.artwork_url)})`,
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover"
+    };
+
     return (
-      <div className="music-leaf">
+      <div className="music-leaf" style={leafStyle}>
         <Search
           autoCompleteValue={this.state.autoCompleteValue}
           tracks={this.state.tracks}
